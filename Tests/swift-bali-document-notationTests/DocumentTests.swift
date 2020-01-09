@@ -1,5 +1,5 @@
 import XCTest
-@testable import swift_bali_hsm_proxy
+@testable import swift_bali_document_notation
 
 final class DocumentTests: XCTestCase {
     
