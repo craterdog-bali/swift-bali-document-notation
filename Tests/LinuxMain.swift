@@ -1,7 +1,7 @@
 import XCTest
 
-import swift_bali_hsm_proxyTests
+import BDN
 
 var tests = [XCTestCaseEntry]()
-tests += swift_bali_hsm_proxyTests.allTests()
+tests += BDN.allTests()
 XCTMain(tests)

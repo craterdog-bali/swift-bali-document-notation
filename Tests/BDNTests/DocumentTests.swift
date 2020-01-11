@@ -1,5 +1,5 @@
 import XCTest
-@testable import swift_bali_document_notation
+@testable import BDN
 
 final class DocumentTests: XCTestCase {
     
