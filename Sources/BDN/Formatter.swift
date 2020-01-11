@@ -1,16 +1,16 @@
 import Foundation
 
 // the number of bytes in a tag
-let TAG_SIZE = 20
+public let TAG_SIZE = 20
 
 // the number of bytes in a key
-let KEY_SIZE = 32
+public let KEY_SIZE = 32
 
 // the number of bytes in a digest
-let DIG_SIZE = 64
+public let DIG_SIZE = 64
 
 // the number of bytes in a signature
-let SIG_SIZE = 64
+public let SIG_SIZE = 64
 
 // the line width for formatting encoded byte strings
 let LINE_WIDTH = 60
