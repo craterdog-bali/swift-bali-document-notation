@@ -14,16 +14,16 @@ let certificateTemplate = """
 )
 """
 
-class Certificate : Content {
-    let publicKey: String
-    let tag = formatter.generateTag()
-    let version = "v1"
+public class Certificate : Content {
+    public let publicKey: String
+    public let tag = formatter.generateTag()
+    public let version = "v1"
 
-    init(publicKey: String) {
+    public init(publicKey: String) {
         self.publicKey = publicKey
     }
 
-    func format(level: Int) -> String {
+    public func format(level: Int) -> String {
         var certificate = certificateTemplate.replacingOccurrences(of: "{publicKey}", with: publicKey)
         certificate = certificate.replacingOccurrences(of: "{tag}", with: tag)
         certificate = certificate.replacingOccurrences(of: "{version}", with: version)

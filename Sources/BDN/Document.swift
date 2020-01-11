@@ -20,21 +20,21 @@ let signedTemplate = """
 ]($type: /bali/notary/Document/v1)
 """
 
-class Document {
-    let timestamp = formatter.currentTimestamp()
-    let account: String
-    let content: Content
-    let certificate: Citation?
-    let signature: String?
+public class Document {
+    public let timestamp = formatter.currentTimestamp()
+    public let account: String
+    public let content: Content
+    public let certificate: Citation?
+    public let signature: String?
 
-    init(account: String, content: Content, certificate: Citation? = nil, signature: String? = nil) {
+    public init(account: String, content: Content, certificate: Citation? = nil, signature: String? = nil) {
         self.account = account
         self.content = content
         self.certificate = certificate
         self.signature = signature
     }
 
-    func format(level: Int) -> String {
+    public func format(level: Int) -> String {
         var document: String
         if signature != nil {
             document = signedTemplate.replacingOccurrences(of: "{timestamp}", with: timestamp)

@@ -111,23 +111,23 @@ func base32EncodeLast(last: UInt8, byteIndex: Int, base32: String) -> String {
 }
 
 
-class Formatter {
+public class Formatter {
 
-    func currentDate() -> String {
+    public func currentDate() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         let now = Date()
         return formatter.string(from: now)
     }
 
-    func currentTime() -> String {
+    public func currentTime() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
         let now = Date()
         return formatter.string(from: now)
     }
 
-    func currentTimestamp() -> String {
+    public func currentTimestamp() -> String {
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "<yyyy-MM-dd'T'HH:mm:ss.SSS>"
@@ -135,31 +135,31 @@ class Formatter {
         return formatter.string(from: now)
     }
 
-    func generateBytes(size: Int) -> [UInt8] {
+    public func generateBytes(size: Int) -> [UInt8] {
         return randomBytes(size: size)
     }
 
-    func generateTag() -> String {
+    public func generateTag() -> String {
         let bytes = randomBytes(size: TAG_SIZE)
         return "#\(base32Encode(bytes: bytes))"
     }
 
-    func generateKey() -> String {
+    public func generateKey() -> String {
         let bytes = randomBytes(size: KEY_SIZE)
         return "'\(base32Encode(bytes: bytes))'"
     }
 
-    func generateDigest() -> String {
+    public func generateDigest() -> String {
         let bytes = randomBytes(size: DIG_SIZE)
         return formatLines(string: base32Encode(bytes: bytes))
     }
 
-    func generateSignature() -> String {
+    public func generateSignature() -> String {
         let bytes = randomBytes(size: SIG_SIZE)
         return formatLines(string: base32Encode(bytes: bytes))
     }
 
-    func formatLines(string: String) -> String {
+    public func formatLines(string: String) -> String {
         var result = ""
         var index = 0
         for character in string {
@@ -172,7 +172,7 @@ class Formatter {
         return result
     }
 
-    func indentLines(string: String, level: Int) -> String {
+    public func indentLines(string: String, level: Int) -> String {
         var indented = string
         var count = level
         while count > 0 {
@@ -182,7 +182,7 @@ class Formatter {
         return indented
     }
 
-    func base32Encode(bytes: [UInt8]) -> String {
+    public func base32Encode(bytes: [UInt8]) -> String {
         // encode each byte
         var string = ""
         let count = bytes.count
@@ -203,7 +203,7 @@ class Formatter {
     }
 
 }
-let formatter = Formatter()
+public let formatter = Formatter()
 
 // TEST CODE
 

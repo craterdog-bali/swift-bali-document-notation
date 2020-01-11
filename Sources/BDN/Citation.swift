@@ -9,19 +9,19 @@ let citationTemplate = """
 ]($type: /bali/notary/Citation/v1)
 """
 
-class Citation {
-    let timestamp = formatter.currentTimestamp()
-    let tag: String
-    let version: String
-    let digest: String
+public class Citation {
+    public let timestamp = formatter.currentTimestamp()
+    public let tag: String
+    public let version: String
+    public let digest: String
 
-    init(tag: String, version: String, digest: String) {
+    public init(tag: String, version: String, digest: String) {
         self.tag = tag
         self.version = version
         self.digest = digest
     }
 
-    func format(level: Int) -> String {
+    public func format(level: Int) -> String {
         var citation = citationTemplate.replacingOccurrences(of: "{timestamp}", with: timestamp)
         citation = citation.replacingOccurrences(of: "{tag}", with: tag)
         citation = citation.replacingOccurrences(of: "{version}", with: version)

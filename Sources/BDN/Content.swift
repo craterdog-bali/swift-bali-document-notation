@@ -1,4 +1,4 @@
-protocol Content {
+public protocol Content {
     var tag: String { get }
     var version: String { get }
 
