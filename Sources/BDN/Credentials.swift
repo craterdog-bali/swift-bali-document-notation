@@ -15,6 +15,9 @@ public class Credentials : Content {
     public let tag = formatter.generateTag()
     public let version = "v1"
 
+    public init() {
+    }
+
     public func format(level: Int) -> String {
         var credentials = credentialsTemplate.replacingOccurrences(of: "{salt}", with: salt)
         credentials = credentials.replacingOccurrences(of: "{tag}", with: tag)
