@@ -30,6 +30,17 @@ final class DocumentTests: XCTestCase {
         print("citation: \(citation.format(level: 0))")
         print()
 
+        // create new credentials
+        let credentials = Credentials()
+        document = Document(account: account, content: credentials, certificate: citation)
+
+        // pretend to sign the credentials document
+        signature = formatter.generateSignature()
+        document = Document(account: account, content: credentials, certificate: citation, signature: signature)
+
+        print("credentials: \(document.format(level: 0))")
+        print()
+
         // create a new transaction
         let merchant = "Starbucks"
         let amount = "$4.95"
@@ -48,10 +59,6 @@ final class DocumentTests: XCTestCase {
         print("transactionId: \(transactionId)")
         print()
 
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        // XCTAssertEqual(swift_bali_hsm_proxy().text, "Hello, World!")
     }
 
 }
