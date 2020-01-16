@@ -21,7 +21,7 @@ public class Citation {
         self.digest = digest
     }
 
-    public func format(level: Int) -> String {
+    public func format(level: Int = 0) -> String {
         var citation = citationTemplate.replacingOccurrences(of: "{timestamp}", with: timestamp)
         citation = citation.replacingOccurrences(of: "{tag}", with: tag)
         citation = citation.replacingOccurrences(of: "{version}", with: version)

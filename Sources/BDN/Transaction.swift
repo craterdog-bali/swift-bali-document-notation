@@ -28,7 +28,7 @@ public class Transaction : Content {
         self.amount = amount
     }
 
-    public func format(level: Int) -> String {
+    public func format(level: Int = 0) -> String {
         var transaction = transactionTemplate.replacingOccurrences(of: "{transaction}", with: self.transaction)
         transaction = transaction.replacingOccurrences(of: "{date}", with: date)
         transaction = transaction.replacingOccurrences(of: "{time}", with: time)

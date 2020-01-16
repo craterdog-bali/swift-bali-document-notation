@@ -16,7 +16,7 @@ final class DocumentTests: XCTestCase {
         var signature = formatter.generateSignature()
         document = Document(account: account, content: certificate, signature: signature)
 
-        print("certificate: \(document.format(level: 0))")
+        print("certificate: \(document.format())")
         print()
 
         // pretend to create a digest of the signed certificate document
@@ -27,7 +27,7 @@ final class DocumentTests: XCTestCase {
         let version = certificate.version
         let citation = Citation(tag: tag, version: version, digest: digest)
 
-        print("citation: \(citation.format(level: 0))")
+        print("citation: \(citation.format())")
         print()
 
         // create new credentials
@@ -38,7 +38,7 @@ final class DocumentTests: XCTestCase {
         signature = formatter.generateSignature()
         document = Document(account: account, content: credentials, certificate: citation, signature: signature)
 
-        print("credentials: \(document.format(level: 0))")
+        print("credentials: \(document.format())")
         print()
 
         // create a new transaction
@@ -51,7 +51,7 @@ final class DocumentTests: XCTestCase {
         signature = formatter.generateSignature()
         document = Document(account: account, content: transaction, certificate: citation, signature: signature)
 
-        print("transaction: \(document.format(level: 0))")
+        print("transaction: \(document.format())")
         print()
 
         // extract the transaction Id

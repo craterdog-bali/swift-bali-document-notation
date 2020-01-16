@@ -34,7 +34,7 @@ public class Document {
         self.signature = signature
     }
 
-    public func format(level: Int) -> String {
+    public func format(level: Int = 0) -> String {
         var document: String
         if signature != nil {
             document = signedTemplate.replacingOccurrences(of: "{timestamp}", with: timestamp)

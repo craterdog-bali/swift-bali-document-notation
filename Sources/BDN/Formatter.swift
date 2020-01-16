@@ -172,7 +172,7 @@ public class Formatter {
         return result
     }
 
-    public func indentLines(string: String, level: Int) -> String {
+    public func indentLines(string: String, level: Int = 0) -> String {
         var indented = string
         var count = level
         while count > 0 {

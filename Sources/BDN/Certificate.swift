@@ -23,7 +23,7 @@ public class Certificate : Content {
         self.publicKey = publicKey
     }
 
-    public func format(level: Int) -> String {
+    public func format(level: Int = 0) -> String {
         var certificate = certificateTemplate.replacingOccurrences(of: "{publicKey}", with: publicKey)
         certificate = certificate.replacingOccurrences(of: "{tag}", with: tag)
         certificate = certificate.replacingOccurrences(of: "{version}", with: version)

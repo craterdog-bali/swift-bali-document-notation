@@ -18,7 +18,7 @@ public class Credentials : Content {
     public init() {
     }
 
-    public func format(level: Int) -> String {
+    public func format(level: Int = 0) -> String {
         var credentials = credentialsTemplate.replacingOccurrences(of: "{salt}", with: salt)
         credentials = credentials.replacingOccurrences(of: "{tag}", with: tag)
         credentials = credentials.replacingOccurrences(of: "{version}", with: version)
