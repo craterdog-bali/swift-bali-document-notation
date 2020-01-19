@@ -144,19 +144,16 @@ public class Formatter {
         return "#\(base32Encode(bytes: bytes))"
     }
 
-    public func generateKey() -> String {
-        let bytes = randomBytes(size: KEY_SIZE)
-        return "'\(base32Encode(bytes: bytes))'"
+    public func generateKey() -> [UInt8] {
+        return randomBytes(size: KEY_SIZE)
     }
 
-    public func generateDigest() -> String {
-        let bytes = randomBytes(size: DIG_SIZE)
-        return formatLines(string: base32Encode(bytes: bytes))
+    public func generateDigest() -> [UInt8] {
+        return randomBytes(size: DIG_SIZE)
     }
 
-    public func generateSignature() -> String {
-        let bytes = randomBytes(size: SIG_SIZE)
-        return formatLines(string: base32Encode(bytes: bytes))
+    public func generateSignature() -> [UInt8] {
+        return randomBytes(size: SIG_SIZE)
     }
 
     public func formatLines(string: String) -> String {
@@ -204,23 +201,3 @@ public class Formatter {
 
 }
 public let formatter = Formatter()
-
-// TEST CODE
-
-/*
-let tag = formatter.generateTag()
-print("tag: \(tag)")
-print()
-
-let key = formatter.generateKey()
-print("key: \(key)")
-print()
-
-let digest = formatter.generateDigest()
-print("digest: '\(formatter.indentLines(string: digest, level: 1))\(EOL)'")
-print()
-
-let signature = formatter.generateSignature()
-print("signature: \(signature)")
-print()
-*/

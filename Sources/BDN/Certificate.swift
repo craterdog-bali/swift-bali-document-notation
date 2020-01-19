@@ -15,19 +15,20 @@ let certificateTemplate = """
 """
 
 public class Certificate : Content {
-    public let publicKey: String
+    public let publicKey: [UInt8]
     public let tag = formatter.generateTag()
     public let version = "v1"
 
-    public init(publicKey: String) {
+    public init(publicKey: [UInt8]) {
         self.publicKey = publicKey
     }
 
     public func format(level: Int = 0) -> String {
-        var certificate = certificateTemplate.replacingOccurrences(of: "{publicKey}", with: publicKey)
-        certificate = certificate.replacingOccurrences(of: "{tag}", with: tag)
-        certificate = certificate.replacingOccurrences(of: "{version}", with: version)
-        return formatter.indentLines(string: certificate, level: level)
+        let publicKeyString = "'\(formatter.base32Encode(bytes: publicKey))'"
+        var formatted = certificateTemplate.replacingOccurrences(of: "{publicKey}", with: publicKeyString)
+        formatted = formatted.replacingOccurrences(of: "{tag}", with: tag)
+        formatted = formatted.replacingOccurrences(of: "{version}", with: version)
+        return formatter.indentLines(string: formatted, level: level)
     }
 
 }

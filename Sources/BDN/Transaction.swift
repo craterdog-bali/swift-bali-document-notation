@@ -29,14 +29,14 @@ public class Transaction : Content {
     }
 
     public func format(level: Int = 0) -> String {
-        var transaction = transactionTemplate.replacingOccurrences(of: "{transaction}", with: self.transaction)
-        transaction = transaction.replacingOccurrences(of: "{date}", with: date)
-        transaction = transaction.replacingOccurrences(of: "{time}", with: time)
-        transaction = transaction.replacingOccurrences(of: "{merchant}", with: merchant)
-        transaction = transaction.replacingOccurrences(of: "{amount}", with: amount)
-        transaction = transaction.replacingOccurrences(of: "{tag}", with: tag)
-        transaction = transaction.replacingOccurrences(of: "{version}", with: version)
-        return formatter.indentLines(string: transaction, level: level)
+        var formatted = transactionTemplate.replacingOccurrences(of: "{transaction}", with: self.transaction)
+        formatted = formatted.replacingOccurrences(of: "{date}", with: date)
+        formatted = formatted.replacingOccurrences(of: "{time}", with: time)
+        formatted = formatted.replacingOccurrences(of: "{merchant}", with: merchant)
+        formatted = formatted.replacingOccurrences(of: "{amount}", with: amount)
+        formatted = formatted.replacingOccurrences(of: "{tag}", with: tag)
+        formatted = formatted.replacingOccurrences(of: "{version}", with: version)
+        return formatter.indentLines(string: formatted, level: level)
     }
 
 }

@@ -25,9 +25,9 @@ public class Document {
     public let account: String
     public let content: Content
     public let certificate: Citation?
-    public let signature: String?
+    public let signature: [UInt8]?
 
-    public init(account: String, content: Content, certificate: Citation? = nil, signature: String? = nil) {
+    public init(account: String, content: Content, certificate: Citation? = nil, signature: [UInt8]? = nil) {
         self.account = account
         self.content = content
         self.certificate = certificate
@@ -35,21 +35,23 @@ public class Document {
     }
 
     public func format(level: Int = 0) -> String {
-        var document: String
+        var formatted: String
         if signature != nil {
-            document = signedTemplate.replacingOccurrences(of: "{timestamp}", with: timestamp)
-            document = document.replacingOccurrences(of: "{signature}", with: formatter.indentLines(string: signature!, level: 2))
+            var signatureString = formatter.formatLines(string: formatter.base32Encode(bytes: signature!))
+            signatureString = formatter.indentLines(string: signatureString, level: 2)
+            formatted = signedTemplate.replacingOccurrences(of: "{timestamp}", with: timestamp)
+            formatted = formatted.replacingOccurrences(of: "{signature}", with: signatureString)
         } else {
-            document = documentTemplate.replacingOccurrences(of: "{timestamp}", with: timestamp)
+            formatted = documentTemplate.replacingOccurrences(of: "{timestamp}", with: timestamp)
         }
-        document = document.replacingOccurrences(of: "{account}", with: account)
-        document = document.replacingOccurrences(of: "{content}", with: content.format(level: level + 1))
+        formatted = formatted.replacingOccurrences(of: "{account}", with: account)
+        formatted = formatted.replacingOccurrences(of: "{content}", with: content.format(level: level + 1))
         if certificate != nil {
-            document = document.replacingOccurrences(of: "{certificate}", with: certificate!.format(level: level + 1))
+            formatted = formatted.replacingOccurrences(of: "{certificate}", with: certificate!.format(level: level + 1))
         } else {
-            document = document.replacingOccurrences(of: "{certificate}", with: "none")
+            formatted = formatted.replacingOccurrences(of: "{certificate}", with: "none")
         }
-        return formatter.indentLines(string: document, level: level)
+        return formatter.indentLines(string: formatted, level: level)
     }
 
 }

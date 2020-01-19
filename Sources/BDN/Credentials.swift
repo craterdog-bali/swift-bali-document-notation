@@ -19,10 +19,10 @@ public class Credentials : Content {
     }
 
     public func format(level: Int = 0) -> String {
-        var credentials = credentialsTemplate.replacingOccurrences(of: "{salt}", with: salt)
-        credentials = credentials.replacingOccurrences(of: "{tag}", with: tag)
-        credentials = credentials.replacingOccurrences(of: "{version}", with: version)
-        return formatter.indentLines(string: credentials, level: level)
+        var formatted = credentialsTemplate.replacingOccurrences(of: "{salt}", with: salt)
+        formatted = formatted.replacingOccurrences(of: "{tag}", with: tag)
+        formatted = formatted.replacingOccurrences(of: "{version}", with: version)
+        return formatter.indentLines(string: formatted, level: level)
     }
 
 }
