@@ -14,7 +14,7 @@ final class DocumentTests: XCTestCase {
 
         // pretend to sign the certificate document
         var signature = formatter.generateSignature()
-        document = Document(account: account, content: certificate, signature: signature)
+        document.signature = signature
 
         print("certificate: \(document.format())")
         print()
@@ -36,7 +36,7 @@ final class DocumentTests: XCTestCase {
 
         // pretend to sign the credentials document
         signature = formatter.generateSignature()
-        document = Document(account: account, content: credentials, certificate: citation, signature: signature)
+        document.signature = signature
 
         print("credentials: \(document.format())")
         print()
@@ -49,7 +49,7 @@ final class DocumentTests: XCTestCase {
 
         // pretend to sign the certificate document
         signature = formatter.generateSignature()
-        document = Document(account: account, content: transaction, certificate: citation, signature: signature)
+        document.signature = signature
 
         print("transaction: \(document.format())")
         print()

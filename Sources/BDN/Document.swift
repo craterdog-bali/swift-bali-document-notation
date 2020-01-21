@@ -25,7 +25,7 @@ public class Document {
     public let account: String
     public let content: Content
     public let certificate: Citation?
-    public let signature: [UInt8]?
+    public var signature: [UInt8]?
 
     public init(account: String, content: Content, certificate: Citation? = nil, signature: [UInt8]? = nil) {
         self.account = account
