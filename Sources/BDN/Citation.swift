@@ -1,7 +1,6 @@
 let citationTemplate = """
 [
     $protocol: v2
-    $timestamp: {timestamp}
     $tag: {tag}
     $version: {version}
     $digest: '{digest}
@@ -10,7 +9,6 @@ let citationTemplate = """
 """
 
 public class Citation {
-    public let timestamp = formatter.currentTimestamp()
     public let tag: String
     public let version: String
     public let digest: [UInt8]
@@ -24,8 +22,7 @@ public class Citation {
     public func format(level: Int = 0) -> String {
         var digestString = formatter.formatLines(string: formatter.base32Encode(bytes: digest))
         digestString = formatter.indentLines(string: digestString, level: 2)
-        var formatted = citationTemplate.replacingOccurrences(of: "{timestamp}", with: timestamp)
-        formatted = formatted.replacingOccurrences(of: "{tag}", with: tag)
+        var formatted = citationTemplate.replacingOccurrences(of: "{tag}", with: tag)
         formatted = formatted.replacingOccurrences(of: "{version}", with: version)
         formatted = formatted.replacingOccurrences(of: "{digest}", with: digestString)
         return formatter.indentLines(string: formatted, level: level)
