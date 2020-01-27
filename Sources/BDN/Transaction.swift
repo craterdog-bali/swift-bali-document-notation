@@ -1,8 +1,8 @@
+import Foundation
+
 let transactionTemplate = """
 [
-    $transaction: {transaction}
-    $date: "{date}"
-    $time: "{time}"
+    $transaction: "{transaction}"
     $merchant: "{merchant}"
     $amount: "{amount}"
 ](
@@ -15,23 +15,20 @@ let transactionTemplate = """
 """
 
 public class Transaction : Content {
-    public let transaction = formatter.generateTag()
-    public let date = formatter.currentDate()
-    public let time = formatter.currentTime()
+    public let transaction: String
     public let merchant: String
     public let amount: String
     public let tag = formatter.generateTag()
     public let version = "v1"
 
     public init(merchant: String, amount: String) {
+        self.transaction = String(tag.prefix(9).suffix(8))
         self.merchant = merchant
         self.amount = amount
     }
 
     public func format(level: Int = 0) -> String {
-        var formatted = transactionTemplate.replacingOccurrences(of: "{transaction}", with: self.transaction)
-        formatted = formatted.replacingOccurrences(of: "{date}", with: date)
-        formatted = formatted.replacingOccurrences(of: "{time}", with: time)
+        var formatted = transactionTemplate.replacingOccurrences(of: "{transaction}", with: transaction)
         formatted = formatted.replacingOccurrences(of: "{merchant}", with: merchant)
         formatted = formatted.replacingOccurrences(of: "{amount}", with: amount)
         formatted = formatted.replacingOccurrences(of: "{tag}", with: tag)

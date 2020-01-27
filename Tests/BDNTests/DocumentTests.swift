@@ -53,12 +53,5 @@ final class DocumentTests: XCTestCase {
 
         print("transaction: \(document.format())")
         print()
-
-        // extract the transaction Id
-        let transactionId = String(transaction.transaction.prefix(9).suffix(8))
-        print("transactionId: \(transactionId)")
-        print()
-
     }
-
 }
