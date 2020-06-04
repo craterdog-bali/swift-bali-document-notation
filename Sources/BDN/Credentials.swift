@@ -5,7 +5,7 @@ let credentialsTemplate = """
     $type: /bali/notary/Credentials/v1
     $tag: {tag}
     $version: {version}
-    $permissions: /bali/permissions/private/v1
+    $permissions: /bali/permissions/public/v1
     $previous: none
 )
 """
