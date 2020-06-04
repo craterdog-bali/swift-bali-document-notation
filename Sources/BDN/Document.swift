@@ -3,7 +3,7 @@ let documentTemplate = """
     $protocol: v2
     $timestamp: {timestamp}
     $account: {account}
-    $content: {content}
+    $document: {content}
     $certificate: {certificate}
 ]($type: /bali/notary/Document/v1)
 """
@@ -13,7 +13,7 @@ let signedTemplate = """
     $protocol: v2
     $timestamp: {timestamp}
     $account: {account}
-    $content: {content}
+    $document: {content}
     $certificate: {certificate}
     $signature: '{signature}
     '
